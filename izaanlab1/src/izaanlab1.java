@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class izaanlab1 {
     public static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
+     
     System.out.println("Please insert the Month");        
     String inputMonth = scan.nextLine();
     Integer inputMonthInteger = Integer.valueOf(inputMonth); // convert to integer
@@ -28,11 +29,13 @@ public class izaanlab1 {
     System.out.println("Please insert the Day");        
     String inputDay = scan.nextLine();
     Integer inputDayInteger = Integer.valueOf(inputDay); // convert to integer
-    String seasonOfDate = "notset";
     
     if (inputDayInteger < 1){ // lower limit validity check for the "day" input,
         System.out.println("invalid day (hit lower limit)");
     }
+    
+    //--------------------------
+    String seasonOfDate = "notset";
     
     switch (inputMonthInteger) { // Switchcase to define seasons and upper limit validity check of "day" input.
         case 1 -> { //January
