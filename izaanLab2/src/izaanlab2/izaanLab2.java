@@ -15,16 +15,16 @@ import java.util.Scanner;
 
 public class izaanLab2 {
     public static Scanner scan = new Scanner(System.in);
-    
     public static void main(String[] args) {
-    System.out.println("Enter corresponding integer (1 = Postal code, 2 = Multiplication table)");
+    System.out.println("Enter corresponding integer (1 = Postal code, 2 = Multiplication table, 3 = Quit)");
     while (true) {
-    String userSelection = scan.nextLine();
-    if (Integer.valueOf(userSelection) == 1 || Integer.valueOf(userSelection) == 2)  {
+    String userSelection = (scan.nextLine());
+    int intUserSelection = Integer.parseInt(userSelection);
+    if (intUserSelection == 1 || intUserSelection == 2 || intUserSelection == 3)  {
         break;       
     }
     else;
-        System.out.println("Bad number idiot");
+        System.out.println("Bad number u idiot");
     }
     }
 }
