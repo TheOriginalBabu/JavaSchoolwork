@@ -35,6 +35,9 @@ public class IzaanLab2 {
         case 1 ->{
             System.out.println("postal code program");
             String inputPostalCode = (scan.nextLine());
+            if (inputPostalCode.length() > 6) {
+                System.out.println("your postal code was too long");
+            }
             System.out.println("your postal code was " + inputPostalCode); 
         }
         case 2 ->{
