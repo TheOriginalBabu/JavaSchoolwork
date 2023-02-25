@@ -28,7 +28,7 @@ public class IzaanLab2 {
             break;       
         }
         else;
-            System.out.println("Bad number u idiot");
+        System.out.println("Bad number u idiot");
         }
     
     switch(intUserSelection){
