@@ -25,9 +25,9 @@ public class IzaanLab2 {
         intUserSelection = Integer.parseInt(userSelection);
 
         if (intUserSelection == 1 || intUserSelection == 2 || intUserSelection == 3)  {
-            break;       
+            break;
         }
-        else;
+
         System.out.println("Bad number u idiot");
         }
     
