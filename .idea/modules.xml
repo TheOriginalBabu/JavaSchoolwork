@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JavaApplication1/JavaApplication1.iml" filepath="$PROJECT_DIR$/JavaApplication1/JavaApplication1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Netbeans.iml" filepath="$PROJECT_DIR$/.idea/Netbeans.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boringloops/boringloops.iml" filepath="$PROJECT_DIR$/boringloops/boringloops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/izaanLab2/izaanLab2.iml" filepath="$PROJECT_DIR$/izaanLab2/izaanLab2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/izaanlab1/izaanlab1.iml" filepath="$PROJECT_DIR$/izaanlab1/izaanlab1.iml" />
+    </modules>
+  </component>
+</project>

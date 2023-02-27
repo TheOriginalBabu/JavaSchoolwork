@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Netbeans">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/defaultsettings.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Netbeans.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
