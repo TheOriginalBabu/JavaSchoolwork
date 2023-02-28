@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -33,6 +34,7 @@ public class IzaanLab2 {
             System.out.println("postal code program");
             String inputPostalCode = (scan.nextLine());
             String[] inputPostalCode2 = inputPostalCode.split("");
+            System.out.println(Arrays.toString(inputPostalCode2));
             if (inputPostalCode.length() > 6) {
                 System.out.println("your postal code was too long");
             }
