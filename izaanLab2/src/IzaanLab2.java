@@ -20,17 +20,14 @@ public class IzaanLab2 {
     public static void main(String[] args) {
     
     System.out.println("Enter corresponding integer (1 = Postal code, 2 = Multiplication table, 3 = Quit)");
+
     while (true) {
         String userSelection = (scan.nextLine());
         intUserSelection = Integer.parseInt(userSelection);
-
-        if (intUserSelection == 1 || intUserSelection == 2 || intUserSelection == 3)  {
-            break;
-        }
-
+        if (intUserSelection == 1 || intUserSelection == 2 || intUserSelection == 3) break;
         System.out.println("Bad number u idiot");
         }
-    
+
     switch(intUserSelection){
         case 1 ->{
             System.out.println("postal code program");
@@ -39,7 +36,7 @@ public class IzaanLab2 {
             if (inputPostalCode.length() > 6) {
                 System.out.println("your postal code was too long");
             }
-            System.out.println("your postal code was " + inputPostalCode); 
+            System.out.println("your postal code was " + inputPostalCode);
         }
         case 2 ->{
             System.out.println("multiplication program");
