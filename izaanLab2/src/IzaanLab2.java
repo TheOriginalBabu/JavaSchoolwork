@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 /**
  *
- * @author Izaan Syed
- * @date Feb. 22, 2023
- * @ProjectName izaanLab2
- * @Description Loop lab
+ * author Izaan Syed
+ * date Feb. 22, 2023
+ * ProjectName izaanLab2
+ * Description Loop lab
  */
 
 public class IzaanLab2 {
     public static Scanner scan = new Scanner(System.in);
     public static int intUserSelection; // program selection
-    
+    public static String inputPostalCode;
     public static void main(String[] args) {
     
     System.out.println("Enter corresponding integer (1 = Postal code, 2 = Multiplication table, 3 = Quit)");
@@ -31,14 +31,31 @@ public class IzaanLab2 {
 
     switch(intUserSelection){
         case 1 ->{
-            System.out.println("postal code program");
-            String inputPostalCode = (scan.nextLine());
-            String[] inputPostalCode2 = inputPostalCode.split("");
-            System.out.println(Arrays.toString(inputPostalCode2));
-            if (inputPostalCode.length() > 6) {
-                System.out.println("your postal code was too long");
+
+            while (true) {
+                System.out.println("postal code program");
+                String inputPostalCode = (scan.nextLine());
+                String[] inputPostalCode2 = inputPostalCode.split("");
+                System.out.println(Arrays.toString(inputPostalCode2));
+                if (inputPostalCode.length() < 6) {
+                    System.out.println("your postal code was too long");
+                    break;
+                }
+
+//string.valueof
+                try { // Checks if format of postal code is correct (A1A 1A1)
+                    Integer.parseInt(inputPostalCode2[1]);
+                    Integer.parseInt(inputPostalCode2[3]);
+                    Integer.parseInt(inputPostalCode2[5]);
+                    
+
+                    System.out.println("your postal code was " + inputPostalCode);
+                    break;
+                } catch(Exception e){
+                        System.out.println("your postal code was not in the correct format");
+                    }
             }
-            System.out.println("your postal code was " + inputPostalCode);
+
         }
         case 2 ->{
             System.out.println("multiplication program");
