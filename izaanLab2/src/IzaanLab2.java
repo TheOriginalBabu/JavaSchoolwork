@@ -17,8 +17,10 @@ import java.util.Scanner;
 public class IzaanLab2 {
 public static Scanner scan = new Scanner(System.in);
 public static int intUserSelection; // program selection
-public static String inputPostalCode;
+//public static String inputPostalCode;
 public static void main(String[] args) {
+
+//https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
 
 
 while (true) {
@@ -41,21 +43,27 @@ switch(intUserSelection){
             System.out.println(Arrays.toString(inputPostalCode2));
             if (inputPostalCode.length() > 7) {
                 System.out.println("your postal code was too long");
-                break;
             }
 
-//string.valueof
-            try { // Checks if format of postal code is correct (A1A 1A1)
-                Integer.parseInt(inputPostalCode2[1]);
-                Integer.parseInt(inputPostalCode2[4]);
-                Integer.parseInt(inputPostalCode2[6]);
+            try {  // Checks if format of postal code is correct (A1A 1A1)
+                Integer.parseInt(inputPostalCode2[0]);
+                Integer.parseInt(inputPostalCode2[2]);
+                Integer.parseInt(inputPostalCode2[5]);
+            } catch (Exception e) {
+                try {
+                    Integer.parseInt(inputPostalCode2[1]);
+                    Integer.parseInt(inputPostalCode2[4]);
+                    Integer.parseInt(inputPostalCode2[6]);
 
-                System.out.println("your postal code was " + inputPostalCode);
-                break;
-            } catch(Exception e){
-                    System.out.println("your postal code was not in the correct format");
+                    System.out.println("your postal code was " + inputPostalCode);
+                    break;
+                } catch(Exception f){
+                    System.out.println("your postal code has letters in the number spots");
                 }
-            
+            }
+
+
+
         }
 
     }
