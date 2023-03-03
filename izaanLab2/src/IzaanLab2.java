@@ -18,55 +18,79 @@ public class IzaanLab2 {
 public static Scanner scan = new Scanner(System.in);
 public static int intUserSelection; // program selection
 //public static String inputPostalCode;
+public static boolean isNumeric(String str) { // https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
+    try {
+        Double.parseDouble(str);
+        return true;
+    } catch(NumberFormatException e){
+        return false;
+    }
+    }
+
+
 public static void main(String[] args) {
 
-//https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
 
-
-while (true) {
-    System.out.println("Enter corresponding integer (1 = Postal code, 2 = Multiplication table, 3 = Quit)");
-    try{
-        intUserSelection = Integer.parseInt(scan.nextLine());
-        if (intUserSelection == 1 || intUserSelection == 2 || intUserSelection == 3) break;
-        System.out.println("Bad number u idiot");
-    } catch(Exception e){
-        System.out.println("Not a number u idiot");
+    while (true) {
+        System.out.println("Enter corresponding integer (1 = Postal code, 2 = Multiplication table, 3 = Quit)");
+        try {
+            intUserSelection = Integer.parseInt(scan.nextLine());
+            if (intUserSelection == 1 || intUserSelection == 2 || intUserSelection == 3) break;
+            System.out.println("Bad number u idiot");
+        } catch (Exception e) {
+            System.out.println("Not a number u idiot");
+        }
     }
-}
 
-switch(intUserSelection){
-    case 1 ->{
-        while (true) {
-            System.out.println("postal code program");
-            String inputPostalCode = (scan.nextLine());
-            String[] inputPostalCode2 = inputPostalCode.split("");
-            System.out.println(Arrays.toString(inputPostalCode2));
-            if (inputPostalCode.length() > 7) {
-                System.out.println("your postal code was too long");
-            }
+    switch (intUserSelection) {
+        case 1 -> {
+            while (true) {
+                System.out.println("postal code program");
+                boolean validFormat = true;
+                String inputPostalCode = (scan.nextLine());
+                String[] inputPostalCode2 = inputPostalCode.split("");
+                System.out.println(Arrays.toString(inputPostalCode2));
+                if (inputPostalCode.length() > 7) {
+                    System.out.println("your postal code was too long");
+                }
 
-            try {  // Checks if format of postal code is correct (A1A 1A1)
-                Integer.parseInt(inputPostalCode2[0]);
-                Integer.parseInt(inputPostalCode2[2]);
-                Integer.parseInt(inputPostalCode2[5]);
-            } catch (Exception e) {
-                try {
-                    Integer.parseInt(inputPostalCode2[1]);
-                    Integer.parseInt(inputPostalCode2[4]);
-                    Integer.parseInt(inputPostalCode2[6]);
-
-                    System.out.println("your postal code was " + inputPostalCode);
+                // Checks if format of postal code is correct (A1A 1A1)
+                if (isNumeric(inputPostalCode2[0])) {
+                    System.out.println("your postal code has a number in the first spot");
+                    validFormat = false;
+                }
+                if (!isNumeric(inputPostalCode2[1])) {
+                    System.out.println("your postal code has a letter in the second spot");
+                    validFormat = false;
+                }
+                if (isNumeric(inputPostalCode2[2])) {
+                    System.out.println("your postal code has a number in the third spot");
+                    validFormat = false;
+                }
+                if (!isNumeric(inputPostalCode2[4])) {
+                    System.out.println("your postal code has a letter in the fourth spot");
+                    validFormat = false;
+                }
+                if (isNumeric(inputPostalCode2[5])) {
+                    System.out.println("your postal code has a number in the fifth spot");
+                    validFormat = false;
+                }
+                if (!isNumeric(inputPostalCode2[6])) {
+                    System.out.println("your postal code has a letter in the sixth spot");
+                    validFormat = false;
+                }
+                System.out.println("your postal code was " + inputPostalCode);
+                if (validFormat) {
+                    System.out.println("your postal code was valid");
                     break;
-                } catch(Exception f){
-                    System.out.println("your postal code has letters in the number spots");
+                } else {
+                    System.out.println("your postal code was invalid. please try again");
                 }
             }
 
-
-
         }
 
-    }
+
     case 2 ->{
         while (true) {
             System.out.println("multiplication program");
