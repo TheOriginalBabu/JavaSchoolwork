@@ -50,6 +50,7 @@ public static void main(String[] args) {
                 String inputPostalCode = (scan.nextLine());
                 String[] inputPostalCode2 = inputPostalCode.split("");
                 System.out.println(Arrays.toString(inputPostalCode2));
+
                 if (inputPostalCode.length() > 7) {
                     System.out.println("your postal code was too long");
                 }
