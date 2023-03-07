@@ -9,8 +9,68 @@
 import java.util.Scanner;
 
 public class IzaanLab3 {
+    public static boolean isInteger(String str) { // Simple method to check if input is an integer, based off https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     public static void ValidityCheck() {
         System.out.println("Postal Code Validity Check");
+        boolean validFormat = true; // Boolean used to break loop if postal code is valid
+        String inputPostalCode = "A1A 1A1"; // (scan.nextLine()); to implement user input
+        String[] inputPostalCode2 = inputPostalCode.split(""); // Splits postal code string into array of characters that can be referenced easily in value checks
+
+        // Checks if postal code format is correct
+        if (inputPostalCode.length() > 7) {
+            System.out.println("your postal code was too long");
+            validFormat = false;
+        }
+        if (inputPostalCode.length() < 7) {
+            System.out.println("your postal code was too short");
+            validFormat = false;
+        }
+
+        if (!inputPostalCode2[3].equals(" ")) {
+            System.out.println("your postal code does not has a space separating the first and second half");
+            validFormat = false;
+        }
+
+        // Checks if postal code numbers and letters are in correct spot
+        if (isInteger(inputPostalCode2[0])) {
+            System.out.println("your postal code has a number in the first spot");
+            validFormat = false;
+        }
+        if (!isInteger(inputPostalCode2[1])) {
+            System.out.println("your postal code has a letter in the second spot");
+            validFormat = false;
+        }
+        if (isInteger(inputPostalCode2[2])) {
+            System.out.println("your postal code has a number in the third spot");
+            validFormat = false;
+        }
+        if (!isInteger(inputPostalCode2[4])) {
+            System.out.println("your postal code has a letter in the fourth spot");
+            validFormat = false;
+        }
+        if (isInteger(inputPostalCode2[5])) {
+            System.out.println("your postal code has a number in the fifth spot");
+            validFormat = false;
+        }
+        if (!isInteger(inputPostalCode2[6])) {
+            System.out.println("your postal code has a letter in the sixth spot");
+            validFormat = false;
+        }
+
+        System.out.println("Your postal code was " + inputPostalCode);
+
+        if (validFormat) { // Loop break if postal code is valid
+            System.out.println("Your postal code fits all conventions and is valid");
+        } else {          // Error message if postal code is invalid
+            System.out.println("Your postal code is invalid. Please fix above errors and try again");
+        }
     }
     public static void main(String[] args) {
         System.out.println("Postal code lab 3");
