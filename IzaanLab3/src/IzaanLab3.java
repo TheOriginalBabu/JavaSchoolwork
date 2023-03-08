@@ -17,10 +17,9 @@ public class IzaanLab3 {
             return false;
         }
     }
-    public static void ValidityCheck() {
+    public static Boolean ValidityCheck(String inputPostalCode) {
         System.out.println("Postal Code Validity Check");
         boolean validFormat = true; // Boolean used to break loop if postal code is valid
-        String inputPostalCode = "A1A 1A1"; // (scan.nextLine()); to implement user input
         String[] inputPostalCode2 = inputPostalCode.split(""); // Splits postal code string into array of characters that can be referenced easily in value checks
 
         // Checks if postal code format is correct
@@ -68,12 +67,14 @@ public class IzaanLab3 {
 
         if (validFormat) { // Loop break if postal code is valid
             System.out.println("Your postal code fits all conventions and is valid");
-        } else {          // Error message if postal code is invalid
+            return true;
+        } else {           // Error message if postal code is invalid
             System.out.println("Your postal code is invalid. Please fix above errors and try again");
+            return false;
         }
     }
     public static void main(String[] args) {
         System.out.println("Postal code lab 3");
-        ValidityCheck();
+        ValidityCheck("A1A 1A1");
     }
 }
