@@ -7,11 +7,12 @@
  */
 
 import java.util.Scanner;
+import java.util.*;
 
 public class IzaanLab3 {
-    public static boolean isInteger(String str) { // Simple method to check if input is an integer, based off https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
+    public static boolean isInteger(String check) { // Simple method to check if input is an integer, based off https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
         try {
-            Integer.parseInt(str);
+            Integer.parseInt(check);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -21,8 +22,7 @@ public class IzaanLab3 {
         System.out.println("Postal Code Validity Check for " + inputPostalCode);
         boolean validFormat = true; // Boolean used to break loop if postal code is valid
         String[] inputPostalCode2 = inputPostalCode.split(""); // Splits postal code string into array of characters that can be referenced easily in value checks
-
-        // Checks if postal code format is correct
+        // Format Checks
         if (inputPostalCode.length() > 7) {
             System.out.println("your postal code was too long");
             validFormat = false;
@@ -35,6 +35,7 @@ public class IzaanLab3 {
             System.out.println("your postal code does not has a space separating the first and second half");
             validFormat = false;
         }
+        // Validity Checks
         if (isInteger(inputPostalCode2[0])) {
             System.out.println("your postal code has a number in the first spot");
             validFormat = false;
@@ -68,8 +69,14 @@ public class IzaanLab3 {
             return false;
         }
     }
+
+    public static Integer arrayLength = 10;
+    public static String[][] postCodes = new String[arrayLength][arrayLength];
+
+
     public static void main(String[] args) {
         System.out.println("Postal code lab 3");
+        System.out.println(Arrays.toString(postCodes));
         System.out.println(ValidityCheck("A1A 1A1"));
     }
 }
