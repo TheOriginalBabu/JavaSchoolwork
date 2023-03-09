@@ -70,13 +70,101 @@ public class IzaanLab3 {
         }
     }
 
-    public static Integer arrayLength = 10;
-    public static String[][] postCodes = new String[arrayLength][arrayLength];
+    public static String[][] postCodes = new String[10][10];
 
+    //todo code program to add postal codes (alongside street address) from user input to postCodes 2d Array database
+    public static void add() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter your postal code: ");
+        String newCode = input.nextLine();
+        if (ValidityCheck(newCode)) {
+            System.out.println("Please enter the new address: ");
+            String newAddress = input.nextLine();
+            if (check(newAddress)) {
+                System.out.println("Address already exists in database");
+            }
+            else
+                for (int row = 0; row < postCodes.length; row++) {
+                    if (postCodes[row][0] == null) {
+                        postCodes[row][0] = newCode;
+                        postCodes[row][1] = newAddress;
+                        break;
+                    }
+            }
+        }
+    }
+    public static void delete() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter the address you wish to delete: ");
+        String deleteAddress = input.nextLine();
+        for (int row = 0; row < postCodes.length; row++) {
+            if (postCodes[row][1] != null && postCodes[row][1].equals(deleteAddress)) {
+                postCodes[row][0] = null;
+                postCodes[row][1] = null;
+                break;
+            }
+        }
+    }
+    public static void edit() { //method to allow the user to edit the postal code of a single address
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter the address you wish to edit: ");
+        String editAddress = input.nextLine();
+        for (int row = 0; row < postCodes.length; row++) {
+            if (postCodes[row][1] != null && postCodes[row][1].equals(editAddress)) {
+                System.out.println("Please enter the new postal code: ");
+                String newCode = input.nextLine();
+                if (ValidityCheck(newCode)) {
+                    postCodes[row][0] = newCode;
+                    break;
+                }
+            }
+        }
+    }
+
+    //todo code function to check if specified street address is already in database
+    public static boolean check(String address) {
+        for (String[] postCode : postCodes) {
+            if (postCode[1] != null && postCode[1].equals(address)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         System.out.println("Postal code lab 3");
-        System.out.println(Arrays.toString(postCodes));
-        System.out.println(ValidityCheck("A1A 1A1"));
-    }
+        //todo implement main menu loop that allows user to choose between add, delete, edit, and print
+        while(true){
+            Scanner input = new Scanner(System.in);
+            System.out.println("Please enter a number to select an option: ");
+            System.out.println("1. Add");
+            System.out.println("2. Delete");
+            System.out.println("3. Edit");
+            System.out.println("4. Print");
+            System.out.println("5. Exit");
+            int choice = input.nextInt();
+            switch (choice){
+                case 1:
+                    add();
+                    break;
+                case 2:
+                    delete();
+                    break;
+                case 3:
+                    edit();
+                    break;
+                case 4:
+                    for (String[] postCode : postCodes) {
+                        if (postCode[0] != null) System.out.println(postCode[0] + " " + postCode[1]);
+                    }
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Invalid input");
+            }
+        }
+        //for (String[] postCode : postCodes) {
+        //    if (postCode[0] != null) System.out.println(postCode[0] + " " + postCode[1]);
+        }
 }
