@@ -9,15 +9,15 @@
 import java.util.Scanner;
 
 public class IzaanLab3 {
-    public static boolean isInteger(String check) { // Simple method to check if input is an integer, based off https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
+    public static boolean isInteger(String intcheck) { // Simple method to check if input is an integer, based off https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
         try {
-            Integer.parseInt(check);
+            Integer.parseInt(intcheck);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
     }
-    public static Boolean ValidityCheck(String inputPostalCode) {
+    public static Boolean ValidityCheck(String inputPostalCode) { // Method to check validity of postal code, lifted off lab 2.
         System.out.println("Postal Code Validity Check for " + inputPostalCode);
         boolean validFormat = true;                                  // Boolean used to break loop if postal code is valid
         String[] inputPostalCode2 = inputPostalCode.split(""); // Splits postal code string into array of characters that can be referenced easily in value checks
@@ -68,11 +68,11 @@ public class IzaanLab3 {
             System.out.println("Your postal code is invalid. Please fix above errors and try again");
             return false;
         }
-    } // could be streamlined if you want to sacrifice errorr message accuracy
+    } // could be streamlined if you want to sacrifice error message accuracy
 
     public static String[][] postCodes = new String[10][10]; // Main 2D array that stores postal codes and addresses
 
-    public static void add() {
+    public static void add() { // Add function
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter your postal code: ");
         String newCode = input.nextLine();
@@ -92,7 +92,7 @@ public class IzaanLab3 {
             }
         }
     }
-    public static void delete() {
+    public static void delete() { // Delete function
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the address you wish to delete: ");
         String deleteAddress = input.nextLine();
@@ -104,7 +104,7 @@ public class IzaanLab3 {
             }
         }
     }
-    public static void edit() {
+    public static void edit() {  // Edit function - not an add + delete
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the address you wish to edit: ");
         String editAddress = input.nextLine();
@@ -133,7 +133,7 @@ public class IzaanLab3 {
 
     }
 
-    public static boolean check(String address) {
+    public static boolean check(String address) { // Duplicate finder
         for (String[] postCode : postCodes) {
             if (postCode[1] != null && postCode[1].equals(address)) {
                 return true;
@@ -174,7 +174,7 @@ public class IzaanLab3 {
                 }
             } catch (Exception e) {
                 System.out.println("Error - Please enter a valid number selection");
-                input.nextLine(); // this is to clear the variable so that the program doesn't loop infinitely
+                input.nextLine(); // clears the "input" variable so that the program doesn't loop infinitely
             }
         }
 
