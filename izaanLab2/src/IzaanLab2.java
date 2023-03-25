@@ -60,49 +60,50 @@ public class IzaanLab2 {
                             validFormat = false;
                         }
 
-                        if (!inputPostalCode2[3].equals(" ")) {
-                            System.out.println("your postal code does not has a space separating the first and second half");
-                            validFormat = false;
-                        }
-
                         // Checks if postal code numbers and letters are in correct spot
-                        if (isInteger(inputPostalCode2[0])) {
-                            System.out.println("your postal code has a number in the first spot");
-                            validFormat = false;
-                        }
-                        if (!isInteger(inputPostalCode2[1])) {
-                            System.out.println("your postal code has a letter in the second spot");
-                            validFormat = false;
-                        }
-                        if (isInteger(inputPostalCode2[2])) {
-                            System.out.println("your postal code has a number in the third spot");
-                            validFormat = false;
-                        }
-                        if (!isInteger(inputPostalCode2[4])) {
-                            System.out.println("your postal code has a letter in the fourth spot");
-                            validFormat = false;
-                        }
-                        if (isInteger(inputPostalCode2[5])) {
-                            System.out.println("your postal code has a number in the fifth spot");
-                            validFormat = false;
-                        }
-                        if (!isInteger(inputPostalCode2[6])) {
-                            System.out.println("your postal code has a letter in the sixth spot");
-                            validFormat = false;
-                        }
+                        if (validFormat) {  // BUGFIX UPDATE - Prevents program from crashing if postal code is too short
+                            if (!inputPostalCode2[3].equals(" ")) {
+                                System.out.println("your postal code does not has a space separating the first and second half");
+                                validFormat = false;
+                            }
 
-                        System.out.println("Your postal code was " + inputPostalCode);
-
-                        if (validFormat) { // Loop break if postal code is valid
-                            System.out.println("Your postal code fits all conventions and is valid");
-                            break;
-                        } else {          // Error message if postal code is invalid
-                            System.out.println("Your postal code is invalid. Please fix above errors and try again");
+                            if (isInteger(inputPostalCode2[0])) {
+                                System.out.println("your postal code has a number in the first spot");
+                                validFormat = false;
+                            }
+                            if (!isInteger(inputPostalCode2[1])) {
+                                System.out.println("your postal code has a letter in the second spot");
+                                validFormat = false;
+                            }
+                            if (isInteger(inputPostalCode2[2])) {
+                                System.out.println("your postal code has a number in the third spot");
+                                validFormat = false;
+                            }
+                            if (!isInteger(inputPostalCode2[4])) {
+                                System.out.println("your postal code has a letter in the fourth spot");
+                                validFormat = false;
+                            }
+                            if (isInteger(inputPostalCode2[5])) {
+                                System.out.println("your postal code has a number in the fifth spot");
+                                validFormat = false;
+                            }
+                            if (!isInteger(inputPostalCode2[6])) {
+                                System.out.println("your postal code has a letter in the sixth spot");
+                                validFormat = false;
+                            }
                         }
+                            System.out.println("Your postal code was " + inputPostalCode);
+
+                            if (validFormat) { // Loop break if postal code is valid
+                                System.out.println("Your postal code fits all conventions and is valid");
+                                break;
+                            } else {          // Error message if postal code is invalid
+                                System.out.println("Your postal code is invalid. Please fix above errors and try again");
+                            }
+
+
                     }
-
                 }
-
                 case 2 -> { // Multiplication program
                     while (true) {
                         System.out.println("Multiplication program. Enter a number to see its multiplication table up to 12.");

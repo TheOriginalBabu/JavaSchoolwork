@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c240259-2986-4e66-bdf1-a95a3ec86d31" name="Changes" comment="" />
+    <list default="true" id="2c240259-2986-4e66-bdf1-a95a3ec86d31" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/izaanLab2/IzaanLab2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/izaanLab2/IzaanLab2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IzaanLab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IzaanLab2.java" afterDir="false" />
+    </list>
     <list id="d1952cae-9f23-45ad-b1ad-ee309c5b5106" name="Changes by grif8680" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +32,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "last_opened_file_path": "C:/Users/Izaan/Documents/GitHub/Netbeans/IzaanLab3",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "org.overengineer.inlineproblems.settings.SettingsConfigurable"
   }
 }]]></component>
   <component name="RunManager">
@@ -56,8 +60,21 @@
     </task>
     <servers />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/izaanLab2$IzaanLab2.ic" NAME="IzaanLab2 Coverage Results" MODIFIED="1679721236499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
