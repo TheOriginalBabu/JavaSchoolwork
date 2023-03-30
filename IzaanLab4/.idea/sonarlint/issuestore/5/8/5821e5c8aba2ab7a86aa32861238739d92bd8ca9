@@ -1,0 +1,38 @@
+
+b
+java:S1192a"GDefine a constant instead of duplicating this literal "random" 3 times.(•Ã¿“ÿÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+c
+java:S2095"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(—Š¶¿üÿÿÿÿ
+`
+java:S20958"EUse try-with-resources or close this "Scanner" in a "finally" clause.(ö†àÜùÿÿÿÿ
+
+java:S4165¼"hRemove this useless assignment; "timedArray" already holds the assigned value along all execution paths.(ëêßÈ
+N	java:S106$"9Replace this use of System.out or System.err by a logger.(–ÿ®
+@
+java:S11972"*Move the array designators [] to the type.(ê·¹‹
+S	java:S106H"9Replace this use of System.out or System.err by a logger.(â§¢…üÿÿÿÿ
+E
+java:S1197_"*Move the array designators [] to the type.(æíÏ˜úÿÿÿÿ
+7	java:S131`""Add a default case to this switch.(ÜŸ•
+D
+java:S2140c")Use "java.util.Random.nextInt()" instead.(ŸÏÎñıÿÿÿÿ
+@
+java:S1197"*Move the array designators [] to the type.(Ò—€–
+W	java:S125‚"<This block of commented-out lines of code should be removed.(Š½ßºûÿÿÿÿ
+O	java:S106"9Replace this use of System.out or System.err by a logger.(¥ò»‚
+>
+java:S1125¢"'Remove the unnecessary boolean literal.(’ê‚©
+F
+java:S1197¦"*Move the array designators [] to the type.(ˆôâùÿÿÿÿ
+T	java:S106¨"9Replace this use of System.out or System.err by a logger.(˜Ü‰¦øÿÿÿÿ
+@
+java:S1197®"*Move the array designators [] to the type.(ü»Ñ3
+N	java:S106¯"9Replace this use of System.out or System.err by a logger.(ïŠµ
+O	java:S106±"9Replace this use of System.out or System.err by a logger.(Ë™—
+A
+java:S1197²"*Move the array designators [] to the type.(ë–Ùà
+F
+java:S1197¶"*Move the array designators [] to the type.(º²Ãûÿÿÿÿ
+O	java:S106¿"9Replace this use of System.out or System.err by a logger.(İäÍò

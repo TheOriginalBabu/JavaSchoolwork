@@ -72,7 +72,7 @@ public class IzaanLab3 {
 
     public static String[][] postCodes = new String[10][10]; // Main 2D array that stores postal codes and addresses
 
-    public static void add() { // Add function
+    public static void add() { // Add function - adds street address to postal code, creates postal code if doesnt already exist
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter your postal code: ");
         String newCode = input.nextLine();
