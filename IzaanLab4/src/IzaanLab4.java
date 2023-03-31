@@ -13,7 +13,7 @@ import java.util.Scanner;
  * description: this is my lab 4 for sorting algortithims
  */
 public class IzaanLab4 {
-   /**
+    /**
      * saveFile will store the data stored in the array of ints to fileName.txt
      * (stored in the same directory as the .java file).
      * @param fileName The name of the file where our ints will be stored.
@@ -35,7 +35,7 @@ public class IzaanLab4 {
         }catch (IOException  e){
             System.out.println("File could not be created!");
         }
-      }
+    }
     /**
      * generateArrayInt will open the text file called fileName that is
      * (stored in the same directory as the .java file). It will then
@@ -49,7 +49,6 @@ public class IzaanLab4 {
         //FileNotFoundException or our code will not compile.
         int array[];
 
-             
         try{
             File saveFile = new File(fileName+".txt");
             //We still can use scanners to read input.
@@ -64,7 +63,7 @@ public class IzaanLab4 {
             int counter = 0;
             while(fileScanner.hasNextLine()){
                 //reads the line and converts to an int.
-                array[counter] = Integer.valueOf(fileScanner.nextLine()); 
+                array[counter] = Integer.parseInt(fileScanner.nextLine());
                 counter++;
             }
             fileScanner.close();//closes the Scanner to avoid memory leaks
@@ -93,22 +92,22 @@ public class IzaanLab4 {
             size = 1;
         }
         int array[] = new int[size];
-        switch (type){
-            case "random":
-                for (int x = 0;x<size;x++){
-                    array[x] =(int)(Math.random() *size);
+        switch (type) {
+            case "random" -> {
+                for (int x = 0; x < size; x++) {
+                    array[x] = (int) (Math.random() * size);
                 }
-                break;
-            case "ascending":
-                for (int x = 0;x<size;x++){
+            }
+            case "ascending" -> {
+                for (int x = 0; x < size; x++) {
                     array[x] = x;
                 }
-                break;
-            case "descending":
-                for (int x = 0;x<size;x++){
-                    array[x] = size-x;
+            }
+            case "descending" -> {
+                for (int x = 0; x < size; x++) {
+                    array[x] = size - x;
                 }
-                break;
+            }
         }//end of switch
         return array;
     }//end of generateArrayInt
@@ -127,7 +126,6 @@ public class IzaanLab4 {
     public static int[] insertionSort(int array[]){
         int counter =0; //used to count the number of iterations (not necessary)
         for (int i =1;i<array.length;i++){ //loops through each element (left to right)
-            ///REMOVE THIS!!!!! counter++;
             int target = array[i]; //target to be placed in sorted postion.
             int left = i -1; //elements left of the target
             while (left>=0 && array[left] > target){
@@ -142,50 +140,31 @@ public class IzaanLab4 {
         return array;
     }//end of insertionSort
     
-    /**
-     * This is the inclass version of our insertion sort
-     * @param array is an array of ints to be sorted
-     * @return returns a sorted array of ints
-     */
-    public static int[] inClassSort(int[] array){
-    boolean swapsMade;
-    do{
-        swapsMade = false;
-        for (int target = 1; target < array.length ; target++){
-            if (array[target] < array[target-1]){
-                int temp = array[target];
-                array[target] = array[target-1];
-                array[target-1] = temp;
-                swapsMade = true;
-            }
-        }
-    }while (swapsMade == true);
-    return array;
-    }
-    
-    public static void displayArray(int array[]){
-        for (int x =0; x < array.length;x++){
-            System.out.println(array[x]);
+    public static void displayArray(int array[]){ // Method to print out Array
+        for (int i : array) {
+            System.out.println(i);
         }    
     }
 
     public static void main(String[] args) {
         //Example for reading and writing to files
         int exampleArray[] = generateArrayInt("random", 10);
+        saveFile("array.txt", exampleArray);
         System.out.println("unsorted");
         displayArray(exampleArray);
-         System.out.println("sorted");
-        int sortedArray[] = inClassSort(exampleArray);
+        System.out.println("sorted");
+        int sortedArray[] = insertionSort(exampleArray);
+        saveFile("arraysorted.txt", exampleArray);
         displayArray(sortedArray);
         
         
-       int exampleReadArray[] = generateArrayInt("random100");
-       displayArray(exampleReadArray);
+        int exampleReadArray[] = generateArrayInt("random100");
+        displayArray(exampleReadArray);
         
         //Example Time tracking code.
         int[] timedArray= generateArrayInt("random",10000);
         long startTime = System.currentTimeMillis(); // starting time
-        timedArray = (insertionSort(timedArray)); // just sorting the array
+        insertionSort(timedArray);                   // call sorting method on timedArray
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
         displayArray(timedArray);
         System.out.println("Array sorted after " + timeTaken + " miliseconds.");
