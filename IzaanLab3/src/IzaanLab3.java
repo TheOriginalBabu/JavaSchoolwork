@@ -18,7 +18,6 @@ public class IzaanLab3 {
         }
     }
     public static Boolean ValidityCheck(String inputPostalCode) { // Method to check validity of postal code, lifted off lab 2.
-        System.out.println("Postal Code Validity Check for " + inputPostalCode);
         boolean validFormat = true;                                  // Boolean used to break loop if postal code is valid
         String[] inputPostalCode2 = inputPostalCode.split(""); // Splits postal code string into array of characters that can be referenced easily in value checks
         // Format Checks
@@ -62,7 +61,7 @@ public class IzaanLab3 {
             }
         }
         if (validFormat) { // Loop break if postal code is valid
-            System.out.println("Your postal code fits all conventions and is valid");
+            //System.out.println("Your postal code fits all conventions and is valid");
             return true;
         } else {           // Error message if postal code is invalid
             System.out.println("Your postal code is invalid. Please fix above errors and try again");
@@ -71,75 +70,133 @@ public class IzaanLab3 {
     } // could be streamlined if you want to sacrifice error message accuracy
 
     public static String[][] postCodes = new String[10][10]; // Main 2D array that stores postal codes and addresses
-
-    public static void add() { // Add function - adds street address to postal code, creates postal code if doesnt already exist
+    public static void add() { // finds nearest empty column to add street address to a specific postal code. Creates postal code if not already there
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter your postal code: ");
         String newCode = input.nextLine();
-        if (ValidityCheck(newCode)) {
-            System.out.println("Please enter the new address: ");
-            String newAddress = input.nextLine();
-            if (check(newAddress)) {
-                System.out.println("Address already exists in database");
-            }
-            else
-                for (int row = 0; row < postCodes.length; row++) {
-                    if (postCodes[row][0] == null) {
-                        postCodes[row][0] = newCode;
-                        postCodes[row][1] = newAddress;
-                        break;
-                    }
-            }
+        if (!ValidityCheck(newCode)) {
+            return;
         }
+        System.out.println("Please enter the new address: ");
+        String newAddress = input.nextLine();
+        if (check(newAddress)) {
+            System.out.println("Address already exists in database");
+        }
+        else
+            for (int row = 0; row < postCodes.length; row++) {
+                if (postCodes[row][0] == null) {
+                    postCodes[row][0] = newCode;
+                    postCodes[row][1] = newAddress;
+                    return;
+                }
+                else if (postCodes[row][0].equals(newCode)) {
+                    for (int column = 1; column < postCodes[row].length; column++) {
+                        if (postCodes[row][column] == null) {
+                            postCodes[row][column] = newAddress;
+                            return;
+                        }
+                    }
+                }
+            }
+        System.out.println("Database is full.");
     }
-    public static void delete() { // Delete function
+
+    public static void delete() { // finds street address and deletes it from its postal code
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the address you wish to delete: ");
         String deleteAddress = input.nextLine();
         for (int row = 0; row < postCodes.length; row++) {
             if (postCodes[row][1] != null && postCodes[row][1].equals(deleteAddress)) {
-                postCodes[row][0] = null;
-                postCodes[row][1] = null;
-                break;
+                for (int column = 1; column < postCodes[row].length; column++) {
+                    if (postCodes[row][column] != null && postCodes[row][column].equals(deleteAddress)) {
+                        postCodes[row][column] = null;
+                        break;
+                    }
+                }
             }
         }
+        streamline();
     }
-    public static void edit() {  // Edit function - not an add + delete
+
+
+    public static void edit() { // finds street address and deletes it from its postal code, then adds new street address to postal code. combination of add + delete method
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the address you wish to edit: ");
         String editAddress = input.nextLine();
+        if (!check(editAddress)) {
+            System.out.println("Address not already present");
+            return;
+        }
         for (int row = 0; row < postCodes.length; row++) {
             if (postCodes[row][1] != null && postCodes[row][1].equals(editAddress)) {
-                System.out.println("Please enter the new postal code: ");
-                String newCode = input.nextLine();
-                if (ValidityCheck(newCode)) {
-                    System.out.println("Please enter the new address: ");
-                    String newAddress = input.nextLine();
-                    if (check(newAddress)) {
-                        System.out.println("Address already exists in database");
+                for (int column = 1; column < postCodes[row].length; column++) {
+                    if (postCodes[row][column] != null && postCodes[row][column].equals(editAddress)) {
+                        postCodes[row][column] = null;
+                        break;
                     }
-                    else
-                        for (int row2 = 0; row2 < postCodes.length; row2++) {
-                            if (postCodes[row2][0] == null) {
-                                postCodes[row2][0] = newCode;
-                                postCodes[row2][1] = newAddress;
-                                break;
-                            }
-                        }
                 }
-                break;
             }
         }
-
+        streamline();
+        System.out.println("Please enter the new postal code: ");
+        String editCode = input.nextLine();
+        if (!ValidityCheck(editCode)) {
+            System.out.println("Invalid postal code");
+            return;
+        }
+        for (int row = 0; row < postCodes.length; row++) {
+            if (postCodes[row][0] == null) {
+                postCodes[row][0] = editCode;
+                postCodes[row][1] = editAddress;
+                return;
+            }
+            else if (postCodes[row][0].equals(editCode)) {
+                for (int column = 1; column < postCodes[row].length; column++) {
+                    if (postCodes[row][column] == null) {
+                        postCodes[row][column] = editAddress;
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println("Database is full.");
     }
 
-    public static boolean check(String address) { // Duplicate finder
+    public static boolean check(String address) { // Check for duplicate address
         for (String[] postCode : postCodes) {
-            if (postCode[1] != null && postCode[1].equals(address)) {
-                return true;
+            for (String s : postCode) {
+                if (s != null && s.equals(address)) {
+                    return true;
+                }
             }
         }
         return false;
+    }
+
+    public static void streamline() { // checks if any postal codes have no addresses, and if so, deletes them
+        for (int row = 0; row < postCodes.length; row++) {
+            if (postCodes[row][0] != null) {
+                boolean empty = true;
+                for (int column = 1; column < postCodes[row].length; column++) {
+                    if (postCodes[row][column] != null) {
+                        empty = false;
+                        break;
+                    }
+                }
+                if (empty) {
+                    postCodes[row][0] = null;
+                }
+            }
+        }
+    }
+
+    public static void print() { // prints entire array, including NULLs
+        for (String[] postCode : postCodes) {
+            for (String s : postCode) {
+                System.out.print(s + " ");
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
@@ -165,9 +222,7 @@ public class IzaanLab3 {
                     edit();
                 }
                 if (choice == 4) {
-                    for (String[] postCode : postCodes) { // print function, too simple to make a method for
-                        if (postCode[0] != null) System.out.println(postCode[0] + " " + postCode[1]);
-                    }
+                    print();
                 }
                 if (choice == 5) {
                     break;
@@ -177,6 +232,5 @@ public class IzaanLab3 {
                 input.nextLine(); // clears the "input" variable so that the program doesn't loop infinitely
             }
         }
-
-        }
+    }
 }
