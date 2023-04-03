@@ -10,7 +10,7 @@ import java.util.Scanner;
  * author: Izaan
  * date: 30-Mar-2022
  * filename: IzaanLab4.java
- * description: this is my lab 4 for sorting algortithims
+ * description: this is my lab 4 for sorting algorithms
  */
 public class IzaanLab4 {
     /**
@@ -25,10 +25,10 @@ public class IzaanLab4 {
         try{
             //creates (or opens) the file called filename.txt 
             FileWriter writeArray = new FileWriter(fileName+ ".data");
-            for (int x = 0; x< array.length;x++){
+            for (int i : array) {
                 //the data written must be a String or char.
-                String line = Integer.toString(array[x]);
-                writeArray.write(line+'\n');//writes the data stored in line to the file                  
+                String line = Integer.toString(i);
+                writeArray.write(line + '\n');//writes the data stored in line to the file
             }
             //closes the file (should be done to avoid memory leaks, and file conflicts)
             writeArray.close();
@@ -43,7 +43,7 @@ public class IzaanLab4 {
      * @param fileName The name of the file where our ints are stored.
      * @return an int array of the read data.
      */
-    public static int[] generateArrayInt(String fileName){
+    public static int[] generateArrayInt(String fileName){ // Reads array from file
         //In java we can read from and write to files with relative ease.
         //We MUST place file access inside a try catch that catches at least the 
         //FileNotFoundException or our code will not compile.
@@ -87,7 +87,7 @@ public class IzaanLab4 {
      *             invalid sizes instead will return an array of length 1.
      * @return - an array of length size prefilled with integers.
      */
-    public static int[] generateArrayInt(String type, int size){
+    public static int[] generateArrayInt(String type, int size){ // Generates an array of ints
         if (size<=0){ //To handle 0 or negative array sizes.
             size = 1;
         }
@@ -138,7 +138,9 @@ public class IzaanLab4 {
         }
         System.out.println("Array sorted after " + counter + " loops.");
         return array;
-    }//end of insertionSort
+    }
+
+    
     
     public static void displayArray(int array[]){ // Method to print out Array
         for (int i : array) {
@@ -149,12 +151,14 @@ public class IzaanLab4 {
     public static void main(String[] args) {
         //Example for reading and writing to files
         int exampleArray[] = generateArrayInt("random", 10);
+
         saveFile("array.txt", exampleArray);
         System.out.println("unsorted");
         displayArray(exampleArray);
-        System.out.println("sorted");
+
         int sortedArray[] = insertionSort(exampleArray);
         saveFile("arraysorted.txt", exampleArray);
+        System.out.println("sorted");
         displayArray(sortedArray);
         
         
@@ -167,8 +171,6 @@ public class IzaanLab4 {
         insertionSort(timedArray);                   // call sorting method on timedArray
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
         displayArray(timedArray);
-        System.out.println("Array sorted after " + timeTaken + " miliseconds.");
-
+        System.out.println("Array sorted after " + timeTaken + " milliseconds.");
     }
-
 }
