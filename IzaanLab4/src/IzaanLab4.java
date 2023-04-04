@@ -140,7 +140,60 @@ public class IzaanLab4 {
         return array;
     }
 
-    
+    public static int[] bubbleSort(int array[]){
+        int counter =0;
+        for (int i =0;i<array.length;i++){ //loops through each element (left to right)
+            for (int j =0;j<array.length-1;j++){ //loops through each element (left to right)
+                counter++;
+                if (array[j] > array[j+1]){
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+        System.out.println("Array sorted after " + counter + " loops.");
+        return array;
+    }
+
+    public static int[] selectionSort(int array[]){  // Selection sort
+        int counter =0;
+        for (int i =0;i<array.length;i++){
+            int min = i;
+            for (int j =i+1;j<array.length;j++){
+                counter++;
+                if (array[j] < array[min]){
+                    min = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = array[min];
+            array[min] = temp;
+        }
+        System.out.println("Array sorted after " + counter + " loops.");
+        return array;
+    }
+
+    public static int [] gnomeSort(int array[]){ // Gnome sort
+        int counter =0;
+        int i = 1;
+        while (i < array.length){
+            counter++;
+            if (array[i-1] <= array[i]){
+                i++;
+            }else{
+                int temp = array[i];
+                array[i] = array[i-1];
+                array[i-1] = temp;
+                i--;
+                if (i == 0){
+                    i = 1;
+                }
+            }
+        }
+        System.out.println("Array sorted after " + counter + " loops.");
+        return array;
+    }
     
     public static void displayArray(int array[]){ // Method to print out Array
         for (int i : array) {
@@ -148,16 +201,57 @@ public class IzaanLab4 {
         }    
     }
 
+    public static void initiaizeArrays(){
+        int[] ascending10 = generateArrayInt("ascending", 10);
+        saveFile("ascending10.txt", ascending10);
+        int[] ascending100 = generateArrayInt("ascending", 100);
+        saveFile("ascending100.txt", ascending100);
+        int[] ascending1000 = generateArrayInt("ascending", 1000);
+        saveFile("ascending1000.txt", ascending1000);
+        int[] ascending10000 = generateArrayInt("ascending", 10000);
+        saveFile("ascending10000.txt", ascending10000);
+        int[] ascending1000000 = generateArrayInt("ascending", 1000000);
+        saveFile("ascending1000000.txt", ascending1000000);
+        int[] ascending10000000 = generateArrayInt("ascending", 10000000);
+        saveFile("ascending10000000.txt", ascending10000000);
+
+        int[] descending10 = generateArrayInt("descending", 10);
+        saveFile("descending10.txt", descending10);
+        int[] descending100 = generateArrayInt("descending", 100);
+        saveFile("descending100.txt", descending100);
+        int[] descending1000 = generateArrayInt("descending", 1000);
+        saveFile("descending1000.txt", descending1000);
+        int[] descending10000 = generateArrayInt("descending", 10000);
+        saveFile("descending10000.txt", descending10000);
+        int[] descending1000000 = generateArrayInt("descending", 1000000);
+        saveFile("descending1000000.txt", descending1000000);
+        int[] descending10000000 = generateArrayInt("descending", 10000000);
+        saveFile("descending10000000.txt", descending10000000);
+
+        int[] random10 = generateArrayInt("random", 10);
+        saveFile("random10.txt", random10);
+        int[] random100 = generateArrayInt("random", 100);
+        saveFile("random100.txt", random100);
+        int[] random1000 = generateArrayInt("random", 1000);
+        saveFile("random1000.txt", random1000);
+        int[] random10000 = generateArrayInt("random", 10000);
+        saveFile("random10000.txt", random10000);
+        int[] random1000000 = generateArrayInt("random", 1000000);
+        saveFile("random1000000.txt", random1000000);
+        int[] random10000000 = generateArrayInt("random", 10000000);
+        saveFile("random10000000.txt", random10000000);
+    }
+
     public static void main(String[] args) {
         //Example for reading and writing to files
         int exampleArray[] = generateArrayInt("random", 10);
 
-        saveFile("array.txt", exampleArray);
+        saveFile("examplearray.txt", exampleArray);
         System.out.println("unsorted");
         displayArray(exampleArray);
 
         int sortedArray[] = insertionSort(exampleArray);
-        saveFile("arraysorted.txt", exampleArray);
+        saveFile("examplearraysorted.txt", exampleArray);
         System.out.println("sorted");
         displayArray(sortedArray);
         
