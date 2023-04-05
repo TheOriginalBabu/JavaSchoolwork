@@ -20,11 +20,11 @@ public class IzaanLab4 {
      */
     public static void saveFile(String fileName, int[] array){
         //In java we can read from and write to files with relative ease.
-        //We MUST place file access inside a try catch that catches at least  
+        //We MUST place file access inside a try catch that catches at least
         //IOException or our code will not compile.
         try{
-            //creates (or opens) the file called filename.txt 
-            FileWriter writeArray = new FileWriter(fileName+ ".data");
+            //creates (or opens) the file called filename.txt
+            FileWriter writeArray = new FileWriter(fileName + ".txt");
             for (int i : array) {
                 //the data written must be a String or char.
                 String line = Integer.toString(i);
@@ -36,6 +36,27 @@ public class IzaanLab4 {
             System.out.println("File could not be created!");
         }
     }
+
+    public static void saveResults(long time, long iterations, String algorithm) {
+        //In java we can read from and write to files with relative ease.
+        //We MUST place file access inside a try catch that catches at least
+        //IOException or our code will not compile.
+
+
+        String results = "\n\t\t" + algorithm + ":\n\t\t\t" + "Time: " + time + "ms\n\t\t\t" + "Iterations: " + iterations + "\n";
+
+
+        try{
+            //creates (or opens) the file called filename.txt
+            try (FileWriter writeArray = new FileWriter("Results" + ".txt", true)) {
+                writeArray.append(results);
+            }
+        }catch (IOException  e){
+            System.out.println("File could not be created!");
+        }
+    }
+
+
     /**
      * generateArrayInt will open the text file called fileName that is
      * (stored in the same directory as the .java file). It will then
@@ -140,10 +161,10 @@ public class IzaanLab4 {
         return array;
     }
 
-    public static int[] bubbleSort(int array[]){
-        int counter =0;
+    public static int[] bubbleSort(int array[]){ // Bubble sort
+        int counter =0; // used to count the number of iterations (not necessary)
         for (int i =0;i<array.length;i++){ //loops through each element (left to right)
-            for (int j =0;j<array.length-1;j++){ //loops through each element (left to right)
+            for (int j =0;j<array.length-1;j++){
                 counter++;
                 if (array[j] > array[j+1]){
                     int temp = array[j];
@@ -203,68 +224,58 @@ public class IzaanLab4 {
 
     public static void initiaizeArrays(){
         int[] ascending10 = generateArrayInt("ascending", 10);
-        saveFile("ascending10.txt", ascending10);
+        saveFile("ascending10", ascending10);
         int[] ascending100 = generateArrayInt("ascending", 100);
-        saveFile("ascending100.txt", ascending100);
+        saveFile("ascending100", ascending100);
         int[] ascending1000 = generateArrayInt("ascending", 1000);
-        saveFile("ascending1000.txt", ascending1000);
+        saveFile("ascending1000", ascending1000);
         int[] ascending10000 = generateArrayInt("ascending", 10000);
-        saveFile("ascending10000.txt", ascending10000);
+        saveFile("ascending10000", ascending10000);
         int[] ascending1000000 = generateArrayInt("ascending", 1000000);
-        saveFile("ascending1000000.txt", ascending1000000);
+        saveFile("ascending1000000", ascending1000000);
         int[] ascending10000000 = generateArrayInt("ascending", 10000000);
-        saveFile("ascending10000000.txt", ascending10000000);
+        saveFile("ascending10000000", ascending10000000);
 
         int[] descending10 = generateArrayInt("descending", 10);
-        saveFile("descending10.txt", descending10);
+        saveFile("descending10", descending10);
         int[] descending100 = generateArrayInt("descending", 100);
-        saveFile("descending100.txt", descending100);
+        saveFile("descending100", descending100);
         int[] descending1000 = generateArrayInt("descending", 1000);
-        saveFile("descending1000.txt", descending1000);
+        saveFile("descending1000", descending1000);
         int[] descending10000 = generateArrayInt("descending", 10000);
-        saveFile("descending10000.txt", descending10000);
+        saveFile("descending10000", descending10000);
         int[] descending1000000 = generateArrayInt("descending", 1000000);
-        saveFile("descending1000000.txt", descending1000000);
+        saveFile("descending1000000", descending1000000);
         int[] descending10000000 = generateArrayInt("descending", 10000000);
-        saveFile("descending10000000.txt", descending10000000);
+        saveFile("descending10000000", descending10000000);
 
         int[] random10 = generateArrayInt("random", 10);
-        saveFile("random10.txt", random10);
+        saveFile("random10", random10);
         int[] random100 = generateArrayInt("random", 100);
-        saveFile("random100.txt", random100);
+        saveFile("random100", random100);
         int[] random1000 = generateArrayInt("random", 1000);
-        saveFile("random1000.txt", random1000);
+        saveFile("random1000", random1000);
         int[] random10000 = generateArrayInt("random", 10000);
-        saveFile("random10000.txt", random10000);
+        saveFile("random10000", random10000);
         int[] random1000000 = generateArrayInt("random", 1000000);
-        saveFile("random1000000.txt", random1000000);
+        saveFile("random1000000", random1000000);
         int[] random10000000 = generateArrayInt("random", 10000000);
-        saveFile("random10000000.txt", random10000000);
+        saveFile("random10000000", random10000000);
     }
 
     public static void main(String[] args) {
+        initiaizeArrays();
         //Example for reading and writing to files
-        int exampleArray[] = generateArrayInt("random", 10);
 
-        saveFile("examplearray.txt", exampleArray);
-        System.out.println("unsorted");
-        displayArray(exampleArray);
-
-        int sortedArray[] = insertionSort(exampleArray);
-        saveFile("examplearraysorted.txt", exampleArray);
-        System.out.println("sorted");
-        displayArray(sortedArray);
         
-        
-        int exampleReadArray[] = generateArrayInt("random100");
-        displayArray(exampleReadArray);
+        //int exampleReadArray[] = generateArrayInt("random100");
+        //displayArray(exampleReadArray);
         
         //Example Time tracking code.
         int[] timedArray= generateArrayInt("random",10000);
         long startTime = System.currentTimeMillis(); // starting time
-        insertionSort(timedArray);                   // call sorting method on timedArray
+        selectionSort(timedArray);                   // call sorting method on timedArray
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
-        displayArray(timedArray);
         System.out.println("Array sorted after " + timeTaken + " milliseconds.");
     }
 }
