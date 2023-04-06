@@ -48,7 +48,7 @@ public class IzaanLab4 {
 
         try{
             //creates (or opens) the file called filename.txt
-            try (FileWriter writeArray = new FileWriter("Results" + ".txt", true)) {
+            try (FileWriter writeArray = new FileWriter("Results", true)) {
                 writeArray.append(results);
             }
         }catch (IOException  e){
@@ -196,6 +196,7 @@ public class IzaanLab4 {
     }
 
     public static int [] gnomeSort(int array[]){ // Gnome sort
+        long startTime = System.currentTimeMillis(); // starting time
         int counter =0;
         int i = 1;
         while (i < array.length){
@@ -212,7 +213,8 @@ public class IzaanLab4 {
                 }
             }
         }
-        System.out.println("Array sorted after " + counter + " loops.");
+        long timeTaken = System.currentTimeMillis() - startTime; // ending time
+        System.out.println("Array sorted after " + counter + " loops"  + "and" + timeTaken + "milliseconds.");
         return array;
     }
     
@@ -272,6 +274,9 @@ public class IzaanLab4 {
         //displayArray(exampleReadArray);
         
         //Example Time tracking code.
+        int[] currentArray = generateArrayInt("ascending10.txt");
+
+
         int[] timedArray= generateArrayInt("random",10000);
         long startTime = System.currentTimeMillis(); // starting time
         selectionSort(timedArray);                   // call sorting method on timedArray
