@@ -77,10 +77,15 @@ public class IzaanLab3 {
         if (!ValidityCheck(newCode)) {
             return;
         }
+        if (lengthCheck(newCode)) {
+            System.out.println("Postal code already has 9 addresses");
+            return;
+        }
         System.out.println("Please enter the new address: ");
         String newAddress = input.nextLine();
         if (check(newAddress)) {
             System.out.println("Address already exists in database");
+            return;
         }
         else
             for (int row = 0; row < postCodes.length; row++) {
@@ -99,6 +104,18 @@ public class IzaanLab3 {
                 }
             }
         System.out.println("Database is full.");
+    }
+
+    // referencable method within the add and edit methods that prevents the addition of an address to a postal code if that postal code already has 9 addresses (upper limit)
+    public static boolean lengthCheck(String address) {
+        for (int row = 0; row < postCodes.length; row++) {
+            for (int column = 1; column < postCodes[row].length; column++) {
+                if (postCodes[row][column] != null && postCodes[row][column].equals(address)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static void delete() { // finds street address and deletes it from its postal code
