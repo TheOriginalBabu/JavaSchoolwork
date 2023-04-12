@@ -77,7 +77,7 @@ public class IzaanLab3 {
         if (!ValidityCheck(newCode)) {
             return;
         }
-        if (lengthCheck(newCode)) {
+        if (lengthInvalidCheck(newCode)) {
             System.out.println("Postal code already has 9 addresses");
             return;
         }
@@ -107,15 +107,15 @@ public class IzaanLab3 {
     }
 
     // referencable method within the add and edit methods that prevents the addition of an address to a postal code if that postal code already has 9 addresses (upper limit)
-    public static boolean lengthCheck(String address) {
+    public static boolean lengthInvalidCheck(String address) {
         for (int row = 0; row < postCodes.length; row++) {
             for (int column = 1; column < postCodes[row].length; column++) {
                 if (postCodes[row][column] != null && postCodes[row][column].equals(address)) {
-                    return true;
+                    return true; // returns true if postal code already has 9 addresses
                 }
             }
         }
-        return false;
+        return false; // returns false if postal code has less than 9 addresses
     }
 
     public static void delete() { // finds street address and deletes it from its postal code
