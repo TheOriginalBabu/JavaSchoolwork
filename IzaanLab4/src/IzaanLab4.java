@@ -66,43 +66,16 @@ public class IzaanLab4 {
      */
 
     //start of c
-    public static String FILENAME = "Results.txt";
-    public static void saveFile(long time, long iterations, String algorithm) {
-        //In java we can read from and write to files with relative ease.
-        //We MUST place file access inside a try catch that catches at least
-        //IOException or our code will not compile.
-
-        String results = "\n\t\t" + algorithm + ":\n\t\t\t" + "Time: " + time + "ms\n\t\t\t" + "Iterations: " + iterations + "\n";
-
-        try{
-            //creates (or opens) the file called filename.txt
-            try (FileWriter writeArray = new FileWriter(FILENAME, true)) {
-                writeArray.append(results);
-            }
-        }catch (IOException  e){
-            System.out.println("File could not be created!");
-        }
-    }
-
-    public static void saveFile(String sortType) {
+    public static void writeResults(String executionData) { // Used to write data into text file
         try {
-            try (FileWriter writeArray = new FileWriter(FILENAME, true)) {
-                writeArray.append(sortType + ":");
-            }
+            FileWriter writeArray = new FileWriter("Results.txt", true);
+            writeArray.write(executionData);
+            writeArray.close();
         } catch (IOException e) {
             System.out.println("File could not be created!");
         }
     }
 
-    public static void saveFile(int arrayLength) {
-        try {
-            try (FileWriter writeArray = new FileWriter(FILENAME, true)) {
-                writeArray.append("\n\t" + arrayLength + ":");
-            }
-        } catch (IOException e) {
-            System.out.println("File could not be created!");
-        }
-    }
     //end of c
 
     public static int[] generateArrayInt(String fileName){ // Reads array from file
@@ -315,7 +288,6 @@ public class IzaanLab4 {
 
     public static void main(String[] args) {
         initiaizeArrays();
-        //Example for reading and writing to files
 
         
         //int exampleReadArray[] = generateArrayInt("random100");
