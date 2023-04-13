@@ -37,18 +37,18 @@ public class IzaanLab4 {
         }
     }
 
-    public static void saveResults(long time, long iterations, String algorithm) {
+    public static void saveResults(long time, long iterations, String algorithm, String arrayType) {
         //In java we can read from and write to files with relative ease.
         //We MUST place file access inside a try catch that catches at least
         //IOException or our code will not compile.
 
 
-        String results = "\n\t\t" + algorithm + ":\n\t\t\t" + "Time: " + time + "ms\n\t\t\t" + "Iterations: " + iterations + "\n";
+        String results = "\n\t\t" + arrayType + " " + algorithm + ":\n\t\t\t" + "Time: " + time + "ms\n\t\t\t" + "Iterations: " + iterations + "\n";
 
 
         try{
             //creates (or opens) the file called filename.txt
-            try (FileWriter writeArray = new FileWriter("Results", true)) {
+            try (FileWriter writeArray = new FileWriter("Results.txt", true)) {
                 writeArray.append(results);
             }
         }catch (IOException  e){
@@ -66,15 +66,7 @@ public class IzaanLab4 {
      */
 
     //start of c
-    public static void writeResults(String executionData) { // Used to write data into text file
-        try {
-            FileWriter writeArray = new FileWriter("Results.txt", true);
-            writeArray.write(executionData);
-            writeArray.close();
-        } catch (IOException e) {
-            System.out.println("File could not be created!");
-        }
-    }
+
 
     //end of c
 
@@ -150,16 +142,17 @@ public class IzaanLab4 {
  * insertionSort will return an array of integers sorted from lowest to highest.
  * It does this through an insertion sorting algorithm.
  * This algorithm functions by comparing a target element (starting at index 1)
- * to all elements to the left of it (lower indexes in the array). 
+ * to all elements to the left of it (lower indexes in the array).
  * If the element to the left is lower,  they are swapped (higher to the right).
  * This repeats until target is not less than the element to its left.
- * When this occurs, the target is considered sorted, and 
- * The process restarts with the new target being the right most unsorted element. 
+ * When this occurs, the target is considered sorted, and
+ * The process restarts with the new target being the right most unsorted element.
+ *
  * @param array is an array of ints to be sorted
  * @return the sorted array of ints.
  */
 
-    public static int[] insertionSort(int array[]){
+    public static int insertionSort(int[] array) {
         long startTime = System.currentTimeMillis(); // starting time
         int counter =0; //used to count the number of iterations (not necessary)
         for (int i =1;i<array.length;i++){ //loops through each element (left to right)
@@ -175,10 +168,10 @@ public class IzaanLab4 {
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
         System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
-        return new int[]{counter, (int) timeTaken};  //returns both "counter" and "timeTaken" in an 1x2 array instead of just returning sorted data.
+        return counter;
     }
 
-    public static int[] bubbleSort(int array[]){ // Bubble sort
+    public static int bubbleSort(int array[]){ // Bubble sort
         long startTime = System.currentTimeMillis(); // starting time
         int counter =0; // used to count the number of iterations (not necessary)
         for (int i =0;i<array.length;i++){ //loops through each element (left to right)
@@ -193,10 +186,10 @@ public class IzaanLab4 {
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
         System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
-        return new int[]{counter, (int) timeTaken}; //returns both "counter" and "timeTaken" in an 1x2 array instead of just returning sorted data.
+        return counter;
     }
 
-    public static int[] selectionSort(int array[]){  // Selection sort
+    public static int selectionSort(int array[]){  // Selection sort
         long startTime = System.currentTimeMillis(); // starting time
         int counter =0;
         for (int i =0;i<array.length;i++){
@@ -213,10 +206,10 @@ public class IzaanLab4 {
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
         System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
-        return new int[]{counter, (int) timeTaken}; //returns both "counter" and "timeTaken" in an 1x2 array instead of just returning sorted data.
+        return counter;
     }
 
-    public static int [] gnomeSort(int array[]){ // Gnome sort
+    public static int gnomeSort(int array[]){ // Gnome sort
         long startTime = System.currentTimeMillis(); // starting time
         int counter =0;
         int i = 1;
@@ -236,7 +229,7 @@ public class IzaanLab4 {
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
         System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
-        return new int[]{counter, (int) timeTaken}; //returns both "counter" and "timeTaken" in an 1x2 array instead of just returning sorted data.
+        return counter;
     }
     
     public static void displayArray(int array[]){ // Method to print out Array
@@ -295,12 +288,11 @@ public class IzaanLab4 {
         
         //Example Time tracking code.
         int[] currentArray = generateArrayInt("ascending10.txt");
+        saveResults();
 
 
         int[] timedArray= generateArrayInt("random",10000);
-        long startTime = System.currentTimeMillis(); // starting time
         selectionSort(timedArray);                   // call sorting method on timedArray
-        long timeTaken = System.currentTimeMillis() - startTime; // ending time
         System.out.println("Array sorted after " + timeTaken + " milliseconds.");
     }
 }
