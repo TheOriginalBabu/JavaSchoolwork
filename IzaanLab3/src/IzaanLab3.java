@@ -89,12 +89,12 @@ public class IzaanLab3 {
         }
         else
             for (int row = 0; row < postCodes.length; row++) {
-                if (postCodes[row][0] == null) {
+                if (postCodes[row][0] == null) { // if postal code is not in database, add it
                     postCodes[row][0] = newCode;
                     postCodes[row][1] = newAddress;
                     return;
                 }
-                else if (postCodes[row][0].equals(newCode)) {
+                else if (postCodes[row][0].equals(newCode)) { // if postal code is in database, add address to it
                     for (int column = 1; column < postCodes[row].length; column++) {
                         if (postCodes[row][column] == null) {
                             postCodes[row][column] = newAddress;
@@ -103,14 +103,14 @@ public class IzaanLab3 {
                     }
                 }
             }
-        System.out.println("Database is full.");
+        System.out.println("Error - reached maximum amount of postal codes that can be stored within the system. Please delete a postal code, or ensure your destination address pertains to an existing postal code"); // Runs if return statement not reached
     }
 
-    // referencable method within the add and edit methods that prevents the addition of an address to a postal code if that postal code already has 9 addresses (upper limit)
-    public static boolean lengthInvalidCheck(String address) {
-        for (int row = 0; row < postCodes.length; row++) {
-            for (int column = 1; column < postCodes[row].length; column++) {
-                if (postCodes[row][column] != null && postCodes[row][column].equals(address)) {
+
+    public static boolean lengthInvalidCheck(String address) { // Method to validate that postal code has less than 9 addresses (upper limit)
+        for (String[] postCode : postCodes) {
+            for (int column = 1; column < postCode.length; column++) {
+                if (postCode[column] != null && postCode[column].equals(address)) {
                     return true; // returns true if postal code already has 9 addresses
                 }
             }
@@ -176,7 +176,7 @@ public class IzaanLab3 {
                 }
             }
         }
-        System.out.println("Database is full.");
+        System.out.println("Error - reached maximum amount of postal codes that can be stored within the system. Please delete a postal code, or ensure your destination address pertains to an existing postal code"); // Runs if return statement not reached
     }
 
     public static boolean check(String address) { // Check for duplicate address
