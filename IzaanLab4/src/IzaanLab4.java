@@ -4,6 +4,7 @@ import java.io.File;//required for file access (reading)
 import java.io.FileNotFoundException;
 import java.io.FileWriter;//required for file access (writing)
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -152,9 +153,9 @@ public class IzaanLab4 {
  * @return the sorted array of ints.
  */
 
-    public static int insertionSort(int[] array) {
+    public static long insertionSort(int[] array, String arrayType) { // Insertion Sort,
         long startTime = System.currentTimeMillis(); // starting time
-        int counter =0; //used to count the number of iterations (not necessary)
+        long counter =0; //used to count the number of iterations (not necessary)
         for (int i =1;i<array.length;i++){ //loops through each element (left to right)
             int target = array[i]; //target to be placed in sorted postion.
             int left = i -1; //elements left of the target
@@ -163,35 +164,47 @@ public class IzaanLab4 {
                 //while the target is not in left most sorted postion
                 array[left+1] = array[left];// swaps elements to the right.
                 left--;
+                if (System.currentTimeMillis() - startTime > 60000) { // if the array is not sorted after 60 seconds
+                    System.out.println("Array not sorted after 60 seconds.");
+                    saveResults(60000, counter, "Insertion Sort - FAILED", arrayType); // saves results indicating failure
+                    return counter;
+                }
             }
             array[left+1] = target;
         }
-        long timeTaken = System.currentTimeMillis() - startTime; // ending time
-        System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
+        long timeTaken = System.currentTimeMillis() - startTime; // ending time,
+        System.out.println("Array sorted after " + counter + " loops and " + timeTaken + " milliseconds.");
+        saveResults(timeTaken, counter, "Insertion Sort", arrayType); // saves results to file within method itself
         return counter;
     }
 
-    public static int bubbleSort(int array[]){ // Bubble sort
+    public static long bubbleSort(int array[], String arrayType){ // Bubble sort,
         long startTime = System.currentTimeMillis(); // starting time
-        int counter =0; // used to count the number of iterations (not necessary)
-        for (int i =0;i<array.length;i++){ //loops through each element (left to right)
-            for (int j =0;j<array.length-1;j++){
+        long counter =0; // used to count the number of iterations (not necessary)
+        for (int i =0;i<array.length;i++) { //loops through each element (left to right)
+            for (int j = 0; j < array.length - 1; j++) {
                 counter++;
-                if (array[j] > array[j+1]){
+                if (array[j] > array[j + 1]) {
                     int temp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+                if (System.currentTimeMillis() - startTime > 60000) { // if the array is not sorted after 60 seconds
+                    System.out.println("Array not sorted after 60 seconds.");
+                    saveResults(60000, counter, "Bubble Sort - FAILED", arrayType); // saves results indicating failure
+                    return counter;
                 }
             }
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
-        System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
+        System.out.println("Array sorted after " + counter + " loops and " + timeTaken + " milliseconds.");
+        saveResults(timeTaken, counter, "Bubble Sort", arrayType); // saves results to file within method itself
         return counter;
     }
 
-    public static int selectionSort(int array[]){  // Selection sort
+    public static long selectionSort(int array[], String arrayType){  // Selection sort
         long startTime = System.currentTimeMillis(); // starting time
-        int counter =0;
+        long counter =0; // used to count the number of iterations (not necessary)
         for (int i =0;i<array.length;i++){
             int min = i;
             for (int j =i+1;j<array.length;j++){
@@ -199,46 +212,58 @@ public class IzaanLab4 {
                 if (array[j] < array[min]){
                     min = j;
                 }
+                if (System.currentTimeMillis() - startTime > 60000) { // if the array is not sorted after 60 seconds
+                    System.out.println("Array not sorted after 60 seconds.");
+                    saveResults(60000, counter, "Selection Sort - FAILED", arrayType); // saves results indicating failure
+                    return counter;
+                }
             }
             int temp = array[i];
             array[i] = array[min];
             array[min] = temp;
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
-        System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
+        System.out.println("Array sorted after " + counter + " loops and " + timeTaken + " milliseconds.");
+        saveResults(timeTaken, counter, "Selection Sort", arrayType); // saves results to file within method itself
         return counter;
     }
 
-    public static int gnomeSort(int array[]){ // Gnome sort
+    public static long gnomeSort(int array[], String arrayType){ // Gnome sort - found off "https://iq.opengenus.org/gnome-sort/"
         long startTime = System.currentTimeMillis(); // starting time
-        int counter =0;
-        int i = 1;
-        while (i < array.length){
-            counter++;
-            if (array[i-1] <= array[i]){
-                i++;
-            }else{
-                int temp = array[i];
-                array[i] = array[i-1];
-                array[i-1] = temp;
-                i--;
-                if (i == 0){
-                    i = 1;
+        long counter =0; // used to count the number of iterations (not necessary)
+        int i = 1; // starting index
+        while (i < array.length){ // loops through each element (left to right)
+            counter++; // counts the number of iterations
+            if (array[i-1] <= array[i]){ // if the element to the left is less than or equal to the target
+                i++; // move to the next element
+            }else{ // if the element to the left is greater than the target
+                int temp = array[i]; // temporary variable to allow for swap
+                array[i] = array[i-1]; // swaps left element to the right
+                array[i-1] = temp; // store to temporary variable
+                i--; // move to the previous element
+                if (i == 0){ // if the target is the left most element
+                    i = 1; // move to the next element
                 }
+            }
+            if (System.currentTimeMillis() - startTime > 60000) { // if the array is not sorted after 60 seconds
+                System.out.println("Array not sorted after 60 seconds.");
+                saveResults(60000, counter, "Gnome Sort - FAILED", arrayType); // saves results indicating failure
+                return counter;
             }
         }
         long timeTaken = System.currentTimeMillis() - startTime; // ending time
-        System.out.println("Array sorted after " + counter + " loops and" + timeTaken + "milliseconds.");
+        System.out.println("Array sorted after " + counter + " loops and " + timeTaken + " milliseconds.");
+        saveResults(timeTaken, counter, "Gnome Sort", arrayType); // saves results to file within method itself
         return counter;
     }
     
-    public static void displayArray(int array[]){ // Method to print out Array
+    public static void displayArray(int array[]){ // Method to print out Array, unused
         for (int i : array) {
             System.out.println(i);
         }    
     }
 
-    public static void initiaizeArrays(){
+    public static void initiaizeArrays(){ // Method to initialize arrays
         int[] ascending10 = generateArrayInt("ascending", 10);
         saveFile("ascending10", ascending10);
         int[] ascending100 = generateArrayInt("ascending", 100);
@@ -279,20 +304,116 @@ public class IzaanLab4 {
         saveFile("random10000000", random10000000);
     }
 
-    public static void main(String[] args) {
-        initiaizeArrays();
+    public static void main(String[] args) { // I WOULD LIKE TO THOROUGHLY APOLOGIZE FOR WHAT YOU ARE ABOUT TO WITNESS BELOW
+        initiaizeArrays(); // generates all the arrays on run, and saves them to files
 
-        
-        //int exampleReadArray[] = generateArrayInt("random100");
-        //displayArray(exampleReadArray);
-        
-        //Example Time tracking code.
-        int[] currentArray = generateArrayInt("ascending10.txt");
-        saveResults();
+        int[] currentArray = generateArrayInt("ascending10");
+        insertionSort(currentArray, "ascending10");
+        bubbleSort(currentArray, "ascending10");
+        selectionSort(currentArray, "ascending10");
+        gnomeSort(currentArray, "ascending10");
 
+        currentArray = generateArrayInt("ascending100");
+        insertionSort(currentArray, "ascending100");
+        bubbleSort(currentArray, "ascending100");
+        selectionSort(currentArray, "ascending100");
+        gnomeSort(currentArray, "ascending100");
 
-        int[] timedArray= generateArrayInt("random",10000);
-        selectionSort(timedArray);                   // call sorting method on timedArray
-        System.out.println("Array sorted after " + timeTaken + " milliseconds.");
+        currentArray = generateArrayInt("ascending1000");
+        insertionSort(currentArray, "ascending1000");
+        bubbleSort(currentArray, "ascending1000");
+        selectionSort(currentArray, "ascending1000");
+        gnomeSort(currentArray, "ascending1000");
+
+        currentArray = generateArrayInt("ascending10000");
+        insertionSort(currentArray, "ascending10000");
+        bubbleSort(currentArray, "ascending10000");
+        selectionSort(currentArray, "ascending10000");
+        gnomeSort(currentArray, "ascending10000");
+
+        currentArray = generateArrayInt("ascending1000000");
+        insertionSort(currentArray, "ascending1000000");
+        bubbleSort(currentArray, "ascending1000000");
+        selectionSort(currentArray, "ascending1000000");
+        gnomeSort(currentArray, "ascending1000000");
+
+        currentArray = generateArrayInt("ascending10000000");
+        insertionSort(currentArray, "ascending10000000");
+        bubbleSort(currentArray, "ascending10000000");
+        selectionSort(currentArray, "ascending10000000");
+        gnomeSort(currentArray, "ascending10000000");
+
+        currentArray = generateArrayInt("descending10");
+        insertionSort(currentArray, "descending10");
+        bubbleSort(currentArray, "descending10");
+        selectionSort(currentArray, "descending10");
+        gnomeSort(currentArray, "descending10");
+
+        currentArray = generateArrayInt("descending100");
+        insertionSort(currentArray, "descending100");
+        bubbleSort(currentArray, "descending100");
+        selectionSort(currentArray, "descending100");
+        gnomeSort(currentArray, "descending100");
+
+        currentArray = generateArrayInt("descending1000");
+        insertionSort(currentArray, "descending1000");
+        bubbleSort(currentArray, "descending1000");
+        selectionSort(currentArray, "descending1000");
+        gnomeSort(currentArray, "descending1000");
+
+        currentArray = generateArrayInt("descending10000");
+        insertionSort(currentArray, "descending10000");
+        bubbleSort(currentArray, "descending10000");
+        selectionSort(currentArray, "descending10000");
+        gnomeSort(currentArray, "descending10000");
+
+        currentArray = generateArrayInt("descending1000000");
+        insertionSort(currentArray, "descending1000000");
+        bubbleSort(currentArray, "descending1000000");
+        selectionSort(currentArray, "descending1000000");
+        gnomeSort(currentArray, "descending1000000");
+
+        currentArray = generateArrayInt("descending10000000");
+        insertionSort(currentArray, "descending10000000");
+        bubbleSort(currentArray, "descending10000000");
+        selectionSort(currentArray, "descending10000000");
+        gnomeSort(currentArray, "descending10000000");
+
+        currentArray = generateArrayInt("random10");
+        insertionSort(currentArray, "random10");
+        bubbleSort(currentArray, "random10");
+        selectionSort(currentArray, "random10");
+        gnomeSort(currentArray, "random10");
+
+        currentArray = generateArrayInt("random100");
+        insertionSort(currentArray, "random100");
+        bubbleSort(currentArray, "random100");
+        selectionSort(currentArray, "random100");
+        gnomeSort(currentArray, "random100");
+
+        currentArray = generateArrayInt("random1000");
+        insertionSort(currentArray, "random1000");
+        bubbleSort(currentArray, "random1000");
+        selectionSort(currentArray, "random1000");
+        gnomeSort(currentArray, "random1000");
+
+        currentArray = generateArrayInt("random10000");
+        insertionSort(currentArray, "random10000");
+        bubbleSort(currentArray, "random10000");
+        selectionSort(currentArray, "random10000");
+        gnomeSort(currentArray, "random10000");
+
+        currentArray = generateArrayInt("random1000000");
+        insertionSort(currentArray, "random1000000");
+        bubbleSort(currentArray, "random1000000");
+        selectionSort(currentArray, "random1000000");
+        gnomeSort(currentArray, "random1000000");
+
+        currentArray = generateArrayInt("random10000000");
+        insertionSort(currentArray, "random10000000");
+        bubbleSort(currentArray, "random10000000");
+        selectionSort(currentArray, "random10000000");
+        gnomeSort(currentArray, "random10000000");
+
     }
 }
