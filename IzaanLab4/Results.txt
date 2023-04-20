@@ -1,0 +1,288 @@
+
+		ascending10 Insertion Sort:
+			Time: 0ms
+			Iterations: 0
+
+		ascending10 Bubble Sort:
+			Time: 0ms
+			Iterations: 90
+
+		ascending10 Selection Sort:
+			Time: 0ms
+			Iterations: 45
+
+		ascending10 Gnome Sort:
+			Time: 0ms
+			Iterations: 9
+
+		ascending100 Insertion Sort:
+			Time: 0ms
+			Iterations: 0
+
+		ascending100 Bubble Sort:
+			Time: 0ms
+			Iterations: 9900
+
+		ascending100 Selection Sort:
+			Time: 1ms
+			Iterations: 4950
+
+		ascending100 Gnome Sort:
+			Time: 0ms
+			Iterations: 99
+
+		ascending1000 Insertion Sort:
+			Time: 0ms
+			Iterations: 0
+
+		ascending1000 Bubble Sort:
+			Time: 8ms
+			Iterations: 999000
+
+		ascending1000 Selection Sort:
+			Time: 5ms
+			Iterations: 499500
+
+		ascending1000 Gnome Sort:
+			Time: 1ms
+			Iterations: 999
+
+		ascending10000 Insertion Sort:
+			Time: 0ms
+			Iterations: 0
+
+		ascending10000 Bubble Sort:
+			Time: 313ms
+			Iterations: 99990000
+
+		ascending10000 Selection Sort:
+			Time: 156ms
+			Iterations: 49995000
+
+		ascending10000 Gnome Sort:
+			Time: 1ms
+			Iterations: 9999
+
+		ascending1000000 Insertion Sort:
+			Time: 5ms
+			Iterations: 0
+
+		ascending1000000 Bubble Sort - FAILED:
+			Time: 60000ms
+			Iterations: 20998224422
+
+		ascending1000000 Selection Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18539118261
+
+		ascending1000000 Gnome Sort:
+			Time: 8ms
+			Iterations: 999999
+
+		ascending10000000 Insertion Sort:
+			Time: 4ms
+			Iterations: 0
+
+		ascending10000000 Bubble Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18306526422
+
+		ascending10000000 Selection Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18596610484
+
+		ascending10000000 Gnome Sort:
+			Time: 36ms
+			Iterations: 9999999
+
+		descending10 Insertion Sort:
+			Time: 0ms
+			Iterations: 45
+
+		descending10 Bubble Sort:
+			Time: 0ms
+			Iterations: 90
+
+		descending10 Selection Sort:
+			Time: 0ms
+			Iterations: 45
+
+		descending10 Gnome Sort:
+			Time: 0ms
+			Iterations: 9
+
+		descending100 Insertion Sort:
+			Time: 0ms
+			Iterations: 4950
+
+		descending100 Bubble Sort:
+			Time: 0ms
+			Iterations: 9900
+
+		descending100 Selection Sort:
+			Time: 0ms
+			Iterations: 4950
+
+		descending100 Gnome Sort:
+			Time: 0ms
+			Iterations: 99
+
+		descending1000 Insertion Sort:
+			Time: 4ms
+			Iterations: 499500
+
+		descending1000 Bubble Sort:
+			Time: 3ms
+			Iterations: 999000
+
+		descending1000 Selection Sort:
+			Time: 1ms
+			Iterations: 499500
+
+		descending1000 Gnome Sort:
+			Time: 0ms
+			Iterations: 999
+
+		descending10000 Insertion Sort:
+			Time: 182ms
+			Iterations: 49995000
+
+		descending10000 Bubble Sort:
+			Time: 319ms
+			Iterations: 99990000
+
+		descending10000 Selection Sort:
+			Time: 138ms
+			Iterations: 49995000
+
+		descending10000 Gnome Sort:
+			Time: 0ms
+			Iterations: 9999
+
+		descending1000000 Insertion Sort - FAILED:
+			Time: 60000ms
+			Iterations: 21179157005
+
+		descending1000000 Bubble Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18187979953
+
+		descending1000000 Selection Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18541964004
+
+		descending1000000 Gnome Sort - FAILED:
+			Time: 60000ms
+			Iterations: 17980618165
+
+		descending10000000 Insertion Sort - FAILED:
+			Time: 60000ms
+			Iterations: 16496775996
+
+		descending10000000 Bubble Sort - FAILED:
+			Time: 60000ms
+			Iterations: 17996686624
+
+		descending10000000 Selection Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18496683769
+
+		descending10000000 Gnome Sort - FAILED:
+			Time: 60000ms
+			Iterations: 17940058905
+
+		random10 Insertion Sort:
+			Time: 0ms
+			Iterations: 20
+
+		random10 Bubble Sort:
+			Time: 0ms
+			Iterations: 90
+
+		random10 Selection Sort:
+			Time: 0ms
+			Iterations: 45
+
+		random10 Gnome Sort:
+			Time: 0ms
+			Iterations: 9
+
+		random100 Insertion Sort:
+			Time: 0ms
+			Iterations: 2446
+
+		random100 Bubble Sort:
+			Time: 0ms
+			Iterations: 9900
+
+		random100 Selection Sort:
+			Time: 0ms
+			Iterations: 4950
+
+		random100 Gnome Sort:
+			Time: 0ms
+			Iterations: 99
+
+		random1000 Insertion Sort:
+			Time: 2ms
+			Iterations: 249606
+
+		random1000 Bubble Sort:
+			Time: 3ms
+			Iterations: 999000
+
+		random1000 Selection Sort:
+			Time: 1ms
+			Iterations: 499500
+
+		random1000 Gnome Sort:
+			Time: 0ms
+			Iterations: 999
+
+		random10000 Insertion Sort:
+			Time: 89ms
+			Iterations: 24788544
+
+		random10000 Bubble Sort:
+			Time: 263ms
+			Iterations: 99990000
+
+		random10000 Selection Sort:
+			Time: 160ms
+			Iterations: 49995000
+
+		random10000 Gnome Sort:
+			Time: 0ms
+			Iterations: 9999
+
+		random1000000 Insertion Sort - FAILED:
+			Time: 60000ms
+			Iterations: 21199511640
+
+		random1000000 Bubble Sort - FAILED:
+			Time: 60000ms
+			Iterations: 17665121515
+
+		random1000000 Selection Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18217421745
+
+		random1000000 Gnome Sort - FAILED:
+			Time: 60000ms
+			Iterations: 17818032560
+
+		random10000000 Insertion Sort - FAILED:
+			Time: 60000ms
+			Iterations: 20959570051
+
+		random10000000 Bubble Sort - FAILED:
+			Time: 60000ms
+			Iterations: 16833675164
+
+		random10000000 Selection Sort - FAILED:
+			Time: 60000ms
+			Iterations: 18630083526
+
+		random10000000 Gnome Sort - FAILED:
+			Time: 60000ms
+			Iterations: 17381020161
